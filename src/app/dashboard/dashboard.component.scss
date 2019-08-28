@@ -1,0 +1,55 @@
+.flex-container {
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  
+  .main {
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+  }
+
+.quest-typescript {
+    display: flex;
+    height: 37%;
+    background-color: aqua;
+    border: 1px solid black;
+}
+
+.quest-angular {
+    display: flex;
+    height: 37%;
+    background-color: darkkhaki;
+    border: 1px solid black;
+}
+
+.weather-container {
+    display: flex;
+    height: 26%;
+}
+
+.quest-weather {
+  display: flex;
+  width: 55%;
+  border: 1px solid black;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.data-weather {
+  display: flex;
+  width: 45%;
+  border: 1px solid black;
+}
+
+.weather-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

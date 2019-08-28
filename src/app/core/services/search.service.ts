@@ -16,25 +16,47 @@ export interface ISearchResultItem  {
     view_count: number;
 }
 
+export interface IWeatherdata {
+    "Datum": string;
+    "Zeit": string;
+    "Temp. A.": number;
+    "Temp. 3": number;
+    "Feuchte A.": number;
+    "Luftdruck": number;
+    "Regen": number;
+    "Wind": number;
+    "Richtung": number;
+    "Helligkeit": number;
+}
+
 @Injectable()
 export class SearchService {
-
-    private static readonly apiUrl =
-        "https://api.stackexchange.com/2.2/search?pagesize=20&order=desc&sort=activity&site=stackoverflow&intitle=";
 
     constructor(private http: Http) {
 
     }
 
-    search(keyword: string): Observable<JSON> {
-        return this.http.get(SearchService.apiUrl + keyword)
+    search(keyword: string, page: number): Observable<ISearchResultItem[]> {
+        let apiUrl =
+        `https://api.stackexchange.com/2.2/search?pagesize=${page}&order=desc&sort=activity&site=stackoverflow&intitle=`;
+
+        return this.http.get(apiUrl + keyword)
             .map((res: Response) => {
                 let data = res.json();
                 console.log("API USAGE: " + data.quota_remaining + " of " + data.quota_max + " requests available" );
-                return data;
+                let items: ISearchResultItem[] = data.items; 
+                return items;
             })
             .catch((err: Response) => Observable.of(err.json()));
     }
 
+    getWeatherdata(): Observable<IWeatherdata[]> {
+        return this.http.get("./assets/weatherdata.json")
+            .map(res => {
+                let data = res.json();
+                return data;
+            });
+            // .catch((err: Response) => Observable.of(err.json()));
+    }
 
 }
