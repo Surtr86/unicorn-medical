@@ -23,11 +23,10 @@ export class WeatherdataService {
   getWeatherdata(): Observable<IWeatherdata[]> {
     return this.http.get("./assets/weatherdata.json")
         .map(res => {
-            console.log('fetched weatherdata')
             let data = res.json();
             return data;
         })
         .catch((err: Response) => Observable.of(err.json()));
     }
-
+    
 }

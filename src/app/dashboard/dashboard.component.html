@@ -1,6 +1,7 @@
 <div class="flex-container">
   <main class="main">
     <div class="quest-typescript">
+      <p class="headline">Questions Typescript</p>
         <!-- 10 neuesten fragen zu typescript stackoverflow -->
         <ol class="items">
           <li *ngFor="let item of itemsTypescript$ | async">
@@ -9,6 +10,7 @@
         </ol>
     </div>
     <div class="quest-angular">
+        <p class="headline">Questions Angular2</p>
         <!-- 10 neuesten fragen zu Angular2 stackoverflow -->
         <ol class="items">
           <li *ngFor="let item of itemsAngular2$ | async">
@@ -17,7 +19,8 @@
         </ol>
     </div>
     <div class="quest-weather">
-      <!-- 10 neuesten fragen zu "Weather" stackoverflow -->
+        <p class="headline">Questions Weather</p>
+      <!-- 5 neuesten fragen zu "Weather" stackoverflow -->
       <ol>
         <li *ngFor="let item of itemsWeather$ | async">
           {{ item.title }}

@@ -8,33 +8,36 @@
   
   .main {
     display: flex;
-    height: 800px;
+    height: 1000px;
     flex-direction: column;
   }
 
 .quest-typescript {
     display: flex;
-    height: 30%;
+    height: 31%;
     background-color: aqua;
     border: 1px solid black;
+    flex-direction: column;
 }
 
 .quest-angular {
     display: flex;
-    height: 30%;
+    height: 31%;
     background-color: darkkhaki;
     border: 1px solid black;
+    flex-direction: column;
 }
 
 .quest-weather {
     display: flex;
-    height: 17%;
+    height: 19%;
     border: 1px solid black;
+    flex-direction: column;
 }
 
 .data-weather {
   display: flex;
-  height: 23%;
+  height: 19%;
   border: 1px solid black;
   background-color: lightblue;
 }
@@ -49,6 +52,13 @@
     width: 321px;
     justify-content: center;
     margin-left: 50px;
+}
+
+.headline {
+  display: flex;
+  text-decoration: underline;
+  font-weight: bold;
+  justify-content: center;
 }
 
 
