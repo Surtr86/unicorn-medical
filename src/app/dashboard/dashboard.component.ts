@@ -24,8 +24,6 @@ export class DashboardComponent implements OnInit {
     this.itemsTypescript$ = this._searchService.search("typescript", 10);
     this.itemsWeather$ = this._searchService.search("weather", 5)
     this.handleWeatherdata();
-    console.log(this.itemsAngular2$.subscribe(res => console.log(res)));
-    console.log(this.itemsTypescript$.subscribe(res => console.log(res)));
   }
 
   // returns a whole randomized number between min and max.
@@ -52,11 +50,10 @@ export class DashboardComponent implements OnInit {
     (function getWeatherObject(index = 0) {
       console.log('start IIFE at index ' + index)
       this.weatherObject[0] = randomizedData[index];
-      console.log(this.weatherObject);
       index < randomizedData.length - 1 
-      ? setTimeout(getWeatherObject.bind(this), 20000, index += 1) // binds this for itemsWeatherdata
-      : setTimeout(getWeatherObject.bind(this), 20000, index = 0); // binds this for itemsWeatherdata
-    }).bind(this)() // binds the index
+      ? setTimeout(getWeatherObject.bind(this), 20000, index += 1) 
+      : setTimeout(getWeatherObject.bind(this), 20000, index = 0); 
+    }).bind(this)() 
   } 
 
   // gets and handles weatherdata.
