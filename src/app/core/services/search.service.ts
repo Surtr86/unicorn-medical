@@ -16,19 +16,6 @@ export interface ISearchResultItem  {
     view_count: number;
 }
 
-export interface IWeatherdata {
-    "Datum": string;
-    "Zeit": string;
-    "Temp. A.": number;
-    "Temp. 3": number;
-    "Feuchte A.": number;
-    "Luftdruck": number;
-    "Regen": number;
-    "Wind": number;
-    "Richtung": number;
-    "Helligkeit": number;
-}
-
 @Injectable()
 export class SearchService {
 
@@ -48,15 +35,6 @@ export class SearchService {
                 return items;
             })
             .catch((err: Response) => Observable.of(err.json()));
-    }
-
-    getWeatherdata(): Observable<IWeatherdata[]> {
-        return this.http.get("./assets/weatherdata.json")
-            .map(res => {
-                let data = res.json();
-                return data;
-            });
-            // .catch((err: Response) => Observable.of(err.json()));
     }
 
 }

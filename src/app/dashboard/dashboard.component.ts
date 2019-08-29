@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchService, IWeatherdata, ISearchResultItem} from "../core/services/search.service";
+import {SearchService, ISearchResultItem} from "../core/services/search.service";
+import {WeatherdataService, IWeatherdata} from "../core/services/weatherdata.service";
 import { Observable } from 'rxjs';
 
 @Component({
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   public itemsWeatherdata: IWeatherdata[] = [];
   public weatherObject: IWeatherdata[] = [];
 
-  constructor(private _searchService: SearchService) { }
+  constructor(private _searchService: SearchService, private _weatherdataService: WeatherdataService) { }
 
   ngOnInit() {
     console.log('dashboard.component is initialized');
@@ -23,6 +24,8 @@ export class DashboardComponent implements OnInit {
     this.itemsTypescript$ = this._searchService.search("typescript", 10);
     this.itemsWeather$ = this._searchService.search("weather", 5)
     this.handleWeatherdata();
+    console.log(this.itemsAngular2$.subscribe(res => console.log(res)));
+    console.log(this.itemsTypescript$.subscribe(res => console.log(res)));
   }
 
   // returns a whole randomized number between min and max.
@@ -43,7 +46,8 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // injects Object from itemsWeatherdata in order into weatherObject with delay. repeats itself when run through. 
+  // injects Object from itemsWeatherdata one after another into weatherObject with delay.
+  // repeats itself when run through.
   setWeatherdata(randomizedData: IWeatherdata[]) {
     (function getWeatherObject(index = 0) {
       console.log('start IIFE at index ' + index)
@@ -55,15 +59,15 @@ export class DashboardComponent implements OnInit {
     }).bind(this)() // binds the index
   } 
 
-  // handles Weatherdata from search.service
+  // gets and handles weatherdata.
   handleWeatherdata() {
-    return this._searchService.getWeatherdata()
+    return this._weatherdataService.getWeatherdata()
       .subscribe (
         res => {
         this.randomizeWeatherdata(res);
         this.setWeatherdata(this.itemsWeatherdata);
         },
-        err => console.error('error at handleWeatherdata() in dashboard.component.ts ' + err)      
+        err => console.error('error at handleWeatherData() in dashboard.component.ts ' + err)      
       )
   }
 

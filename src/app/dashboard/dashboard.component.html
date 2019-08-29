@@ -1,43 +1,48 @@
-<!-- <p>
-  Dashboard Komponente...
-</p> -->
 <div class="flex-container">
   <main class="main">
     <div class="quest-typescript">
         <!-- 10 neuesten fragen zu typescript stackoverflow -->
         <ol class="items">
-          <li *ngFor="let item of itemsTypescript$ | async">{{ item.title }}</li>
+          <li *ngFor="let item of itemsTypescript$ | async">
+            {{ item.title }}
+          </li>
         </ol>
     </div>
     <div class="quest-angular">
         <!-- 10 neuesten fragen zu Angular2 stackoverflow -->
         <ol class="items">
-          <li *ngFor="let item of itemsAngular2$ | async">{{ item.title }}</li>
+          <li *ngFor="let item of itemsAngular2$ | async">
+            {{ item.title }}
+          </li>
         </ol>
     </div>
-    <div class="weather-container">
-        <div class="quest-weather">
-          <!-- 10 neuesten fragen zu "Weather" stackoverflow -->
-          <ol>
-            <li *ngFor="let item of itemsWeather$ | async">
-              {{ item.title }}
-            </li>
-          </ol>
+    <div class="quest-weather">
+      <!-- 10 neuesten fragen zu "Weather" stackoverflow -->
+      <ol>
+        <li *ngFor="let item of itemsWeather$ | async">
+          {{ item.title }}
+        </li>
+      </ol>
+    </div>
+    <div class="data-weather">
+      <!--5 beliebige wetterdaten von hier in einer liste gleichzeitig aber immer abwechselnd -->
+      <ul *ngFor="let item of weatherObject" class="weather-items">
+        <div class="weather-items-column">
+          <p>Zeit: {{item.Zeit}} </p>
+          <p>Datum: {{item.Datum}} </p>
+          <p>Wind: {{item.Wind}} </p>
         </div>
-        <div class="data-weather">
-          <!--5 beliebige wetterdaten von hier in einer liste gleichzeitig aber immer abwechselnd -->
-          <ul *ngFor="let item of weatherObject" class="weather-items">
-            <p>Zeit: {{item.Zeit}} </p>
-            <p>Regen: {{item.Regen}} </p>
-            <p>Wind: {{item.Wind}} </p>
-            <p>Datum: {{item.Datum}} </p>
-            <p>Richtung: {{item.Richtung}} </p>
-            <p>Helligkeit: {{item.Helligkeit}} </p>
-            <!-- <li>Temp. A.: {{item.Temp. A.}} </li> 
-            <li>Temp. 3: {{item.Temp. 3}} </li> 
-            <li>Feuchte A.: {{item.Feuchte A.}} </li>  -->
-          </ul>
+        <div class="weather-items-column">
+          <p>Temp. A.: {{item['Temp. A.']}} </p> 
+          <p>Temp. 3: {{item['Temp. 3']}} </p> 
+          <p>Feuchte A.: {{item['Feuchte A.']}}</p>
         </div>
+        <div class="weather-items-column">
+          <p>Helligkeit: {{item.Helligkeit}} </p>
+          <p>Richtung: {{item.Richtung}} </p>
+          <p>Regen: {{item.Regen}} </p>
+        </div>
+      </ul>
     </div>
   </main>
 </div>

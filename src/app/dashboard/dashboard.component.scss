@@ -8,48 +8,53 @@
   
   .main {
     display: flex;
-    height: 800px;
+    height: 1000px;
     flex-direction: column;
   }
 
 .quest-typescript {
     display: flex;
-    height: 37%;
+    height: 27%;
     background-color: aqua;
     border: 1px solid black;
 }
 
 .quest-angular {
     display: flex;
-    height: 37%;
+    height: 27%;
     background-color: darkkhaki;
     border: 1px solid black;
 }
 
-.weather-container {
-    display: flex;
-    height: 26%;
-}
-
 .quest-weather {
-  display: flex;
-  width: 55%;
-  border: 1px solid black;
+    display: flex;
+    height: 23%;
 }
 
 .items {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .data-weather {
   display: flex;
-  width: 45%;
+  height: 23%;
   border: 1px solid black;
+  background-color: lightblue;
 }
 
 .weather-items {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
 }
+
+.weather-items-column {
+    display: flex;
+    flex-direction: column;
+    width: 321px;
+    justify-content: center;
+}
+
+
+
+

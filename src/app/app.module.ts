@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {SearchService} from "./core/services/search.service";
+import {WeatherdataService} from "./core/services/weatherdata.service";
 import {AppRoutingModule} from "./app.routing.module";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {LayoutModule} from "./core/layout/layout.module";
@@ -24,7 +25,7 @@ import { SearchComponent } from './search/search.component';
     LayoutModule,
     AppRoutingModule
   ],
-  providers: [SearchService],
+  providers: [SearchService, WeatherdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
