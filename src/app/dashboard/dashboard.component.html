@@ -4,7 +4,7 @@
       <p class="headline">Questions Typescript</p>
         <!-- 10 neuesten fragen zu typescript stackoverflow -->
         <ol class="items">
-          <li *ngFor="let item of itemsTypescript$ | async">
+          <li *ngFor="let item of itemsTypescript$ | async; trackBy: questionIdentifier">
             {{ item.title }}
           </li>
         </ol>
@@ -13,7 +13,7 @@
         <p class="headline">Questions Angular2</p>
         <!-- 10 neuesten fragen zu Angular2 stackoverflow -->
         <ol class="items">
-          <li *ngFor="let item of itemsAngular2$ | async">
+          <li *ngFor="let item of itemsAngular2$ | async; trackBy: questionIdentifier">
             {{ item.title }}
           </li>
         </ol>
@@ -22,30 +22,30 @@
         <p class="headline">Questions Weather</p>
       <!-- 5 neuesten fragen zu "Weather" stackoverflow -->
       <ol>
-        <li *ngFor="let item of itemsWeather$ | async">
+        <li *ngFor="let item of itemsWeather$ | async; trackBy: questionIdentifier">
           {{ item.title }}
         </li>
       </ol>
     </div>
     <div class="data-weather">
       <!--5 beliebige wetterdaten von hier in einer liste gleichzeitig aber immer abwechselnd -->
-      <ul *ngFor="let item of weatherObject" class="weather-items">
+      <div *ngIf="weatherObject" class="weather-items">
         <div class="weather-items-column">
-          <p>Zeit: {{item.Zeit}} </p>
-          <p>Datum: {{item.Datum}} </p>
-          <p>Wind: {{item.Wind}} </p>
+          <p>Datum: {{weatherObject.Datum}} </p>
+          <p>Zeit: {{weatherObject.Zeit}} </p>
+          <p>Wind: {{weatherObject.Wind}} </p>
         </div>
         <div class="weather-items-column">
-          <p>Temp. A.: {{item['Temp. A.']}} </p> 
-          <p>Temp. 3: {{item['Temp. 3']}} </p> 
-          <p>Feuchte A.: {{item['Feuchte A.']}}</p>
+          <p>Temp. A.: {{weatherObject['Temp. A.']}} </p> 
+          <p>Temp. 3: {{weatherObject['Temp. 3']}} </p> 
+          <p>Feuchte A.: {{weatherObject['Feuchte A.']}}</p>
         </div>
         <div class="weather-items-column">
-          <p>Helligkeit: {{item.Helligkeit}} </p>
-          <p>Richtung: {{item.Richtung}} </p>
-          <p>Regen: {{item.Regen}} </p>
+          <p>Helligkeit: {{weatherObject.Helligkeit}} </p>
+          <p>Richtung: {{weatherObject.Richtung}} </p>
+          <p>Regen: {{weatherObject.Regen}} </p>
         </div>
-      </ul>
+      </div>
     </div>
   </main>
 </div>

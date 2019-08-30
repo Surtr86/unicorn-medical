@@ -14,6 +14,7 @@ export interface ISearchResultItem  {
     tags: Array<string>;
     title: string;
     view_count: number;
+    question_id: number;
 }
 
 @Injectable()

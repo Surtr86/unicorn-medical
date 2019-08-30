@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   public itemsTypescript$: Observable<ISearchResultItem[]>;
   public itemsWeather$: Observable<ISearchResultItem[]>;
   public itemsWeatherdata: IWeatherdata[] = [];
-  public weatherObject: IWeatherdata[] = [];
+  public weatherObject: IWeatherdata;
 
   constructor(private _searchService: SearchService, private _weatherdataService: WeatherdataService) { }
 
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
   setWeatherdata(randomizedData: IWeatherdata[]) {
     (function getWeatherObject(index = 0) {
       console.log('start IIFE at index ' + index)
-      this.weatherObject[0] = randomizedData[index];
+      this.weatherObject = randomizedData[index];
       index < randomizedData.length - 1 
       ? setTimeout(getWeatherObject.bind(this), 20000, index += 1) 
       : setTimeout(getWeatherObject.bind(this), 20000, index = 0); 
@@ -68,4 +68,7 @@ export class DashboardComponent implements OnInit {
       )
   }
 
+  questionIdentifier(index: number, item: ISearchResultItem): number {
+    return item.question_id;
+  }
 }
